@@ -28,17 +28,13 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressContentEditableWarning>
         <body className={cn(inter.className, "bg-white dark:bg-[#313338]")}>
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn></SignedIn>
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             enableColorScheme={false}
             storageKey="discord-theme"
           >
-            <ModalProvider/>
+            <ModalProvider />
             {children}
           </ThemeProvider>
         </body>
