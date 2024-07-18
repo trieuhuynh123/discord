@@ -1,0 +1,16 @@
+{
+    "sqltools.connections": [
+        {
+            "pgOptions": {
+                "ssl": {
+                    "rejectUnauthorized": true
+                }
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "PostgreSQL",
+            "name": "discord",
+            "connectString": "postgresql://discord_psw1_user:Z104tj3RO5VqXM7BdKtC8qQpnsAI88E4@dpg-cqaj445ds78s739tggqg-a.oregon-postgres.render.com/discord_psw1"
+        }
+    ]
+}
