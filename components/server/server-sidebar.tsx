@@ -10,6 +10,7 @@ interface ServerSideBarProps {
 
 export const ServerSideBar = async ({ serverId }: ServerSideBarProps) => {
   const profile = await currentProfile();
+
   if (!profile) {
     return redirect("/");
   }
@@ -45,12 +46,15 @@ export const ServerSideBar = async ({ serverId }: ServerSideBarProps) => {
   const members = server?.members.filter(
     (member) => member.profileId !== profile.id
   );
+
   if (!server) {
     return redirect("/");
   }
+
   const role = server.members.find(
-    (member) => (member.profileId = profile.id)
+    (member) => member.profileId === profile.id
   )?.role;
+
   return (
     <div className="flex flex-col h-full text-primary w-full dark:bg-[#2B2D31] bg-[#F2F3F5]">
       <ServerHeader server={server} role={role} />

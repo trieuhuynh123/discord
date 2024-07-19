@@ -22,7 +22,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 import { redirect, useRouter } from "next/navigation";
-import { useModal } from "@/hooks/user-modal-store";
+import { useModal } from "@/hooks/use-modal-store";
 import { FileUpload } from "../file-upload";
 
 const formSchema = z.object({

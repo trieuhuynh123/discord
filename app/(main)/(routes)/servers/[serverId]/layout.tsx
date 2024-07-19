@@ -4,13 +4,14 @@ import { db } from "@/lib/db";
 import { RedirectToSignIn } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-const ServerIdLayout = async ({
-  children,
-  params,
-}: {
+interface ServerIdLayoutProps {
   children: React.ReactNode;
-  params: { serverId: string };
-}) => {
+  params: {
+    serverId: string;
+  };
+}
+
+const ServerIdLayout = async ({ children, params }: ServerIdLayoutProps) => {
   const profile = await currentProfile();
   if (!profile) {
     return <RedirectToSignIn />;
@@ -25,10 +26,10 @@ const ServerIdLayout = async ({
       },
     },
   });
+
   if (!server) {
     return redirect("/");
   }
-
   return (
     <div className="h-full">
       <div className=" md:flex h-full w-60 z-20 flex-col fixed inset-y-0">
