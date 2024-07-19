@@ -6,7 +6,6 @@ export async function PATCH(
   { params }: { params: { serverId: string } }
 ) {
   try {
-    console.log("ass");
     const profile = await currentProfile();
     const { name, imageUrl } = await req.json();
 
