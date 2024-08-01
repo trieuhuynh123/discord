@@ -73,7 +73,7 @@ export default async function handler(
         },
       },
     });
-    const channelKey = `chat:${channelId}: messages`;
+    const channelKey = `chat:${channelId}:messages`;
     res?.socket?.server?.io?.emit(channelKey, message);
     return res.status(200).json(message);
   } catch (error) {
