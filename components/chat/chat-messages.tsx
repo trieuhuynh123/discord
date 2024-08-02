@@ -8,6 +8,7 @@ import { ChatItem } from "./chat-item";
 import { format } from "date-fns";
 import { useChatSocket } from "@/hooks/use-chat-socket";
 import { useChatScroll } from "@/hooks/use-chat-scroll";
+import { useParams } from "next/navigation";
 interface ChatMessagesProps {
   name: string;
   member: Member;
@@ -41,6 +42,8 @@ export const ChatMessages = ({
   const updateKey = `chat:${chatId}:messages:update`;
   const chatRef = useRef<ElementRef<"div">>(null);
   const bottomRef = useRef<ElementRef<"div">>(null);
+  const params = useParams();
+  const serverId= params?.serverId
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
     useChatQuery({
       queryKey,
@@ -127,6 +130,7 @@ export const ChatMessages = ({
                 isUpdated={message.updatedAt !== message.createdAt}
                 socketUrl={socketUrl}
                 socketQuery={socketQuery}
+                serverId={serverId}
               />
             ))}
           </Fragment>

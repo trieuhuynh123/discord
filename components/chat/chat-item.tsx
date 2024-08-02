@@ -15,7 +15,6 @@ import axios from "axios";
 import qs from "query-string";
 import { useModal } from "@/hooks/use-modal-store";
 import { useRouter } from "next/navigation";
-import { useParams } from "next/navigation";
 
 type ChatItemProps = {
   id: string;
@@ -30,6 +29,7 @@ type ChatItemProps = {
   isUpdated: boolean;
   socketUrl: string;
   socketQuery: Record<string, string>;
+  serverId: string | string[] | undefined;
 };
 const roleIconMap = {
   GUEST: null,
@@ -60,17 +60,18 @@ export const ChatItem = ({
   isUpdated,
   socketQuery,
   socketUrl,
+  serverId,
 }: ChatItemProps) => {
+  console.log("s");
   const [isEditing, setIsEditing] = useState(false);
   const { onOpen } = useModal();
   const router = useRouter();
-  const params = useParams();
 
   const onMemberClick = () => {
     if (member.id === currentMember.id) {
       return;
     }
-    router.push(`/servers/${params?.serverId}/conversations/${member.id}`);
+    router.push(`/servers/${serverId}/conversations/${member.id}`);
   };
   const fileType = fileUrl?.split(".").pop();
   const isAdmin = currentMember.role === MemberRole.ADMIN;
