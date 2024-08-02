@@ -131,7 +131,7 @@ export const ChatItem = ({
             <div className="flex items-center">
               <p
                 onClick={onMemberClick}
-                className="font-semibold text-sm hover:underline cursor-pointer"
+                className="font-semibold text-sm hover:underline cursor-pointer mr-1"
               >
                 {member.profile.name}
               </p>
